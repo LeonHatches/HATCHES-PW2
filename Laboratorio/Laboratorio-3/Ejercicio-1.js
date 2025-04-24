@@ -6,3 +6,10 @@
    Mi solución será crear un objeto Date, usar su método getDay() y la función
    mediante un arreglo inicializado de los días de la semana.
 */
+
+function diaSemana (numero) {
+	const dia = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+	return dia[numero];
+}
+
+console.log( diaSemana(1) );
