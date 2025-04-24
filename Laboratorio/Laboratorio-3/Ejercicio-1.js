@@ -12,4 +12,7 @@ function diaSemana (numero) {
 	return dia[numero];
 }
 
-console.log( diaSemana(1) );
+const fecha = new Date();
+let   dia   = fecha.getDay();
+
+console.log( diaSemana(dia) );
