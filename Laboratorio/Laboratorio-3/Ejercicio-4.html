@@ -29,20 +29,22 @@
 
 			function verificar() {
 
-				let cadena = document.getElementById("link").value;
-				
+				let cadena  = document.getElementById("link").value;
+				let mensaje = "Verifique el código ingresado.";
+
+				let match = cadena.match(/-/g);
+
 				// Verificador de cantidad de caracteres y guiones
-				if (cadena.length != 12 || cadena.match(/-/g).length != 2) {
-					mostrar("Verifique el código ingresado.");
-				} else {
-					reemplazar(cadena);
+				if (cadena.length === 12 && match && match.length == 2) {
+					mensaje = reemplazar(cadena);
 				}
-				console.log(cadena);
+
+				mostrar(mensaje);
 			}
 
 			function reemplazar (cadena) {
 				cadenaModificada = cadena.replace(/-/g, "");
-				mostrar(cadenaModificada);
+				return cadenaModificada;
 			}
 
 			function mostrar (mensaje) {
