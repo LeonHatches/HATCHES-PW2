@@ -18,6 +18,30 @@
 
 	<body>
 		<script>
+
+			function calcularDia() {
+
+				// Fecha Actual
+				const actual = new Date(2025, 7, 16);         // Fecha de prueba por Commit
+				let year = actual.getFullYear(), restante;
+
+				// Verificación por si se pasa el aniversario
+				if (actual > new Date(year, 7, 15) ) {
+					year += 1;
+				}
+
+				// Aniversario Verificado
+				const aniversario = new Date(year, 7, 15);
+
+				restante = aniversario - actual;
+
+				console.log(aniversario.toString());
+				console.log(actual.toString());
+				console.log(restante);
+			}
+
+			calcularDia();
+
 		</script>
 	</body>
 </html>
