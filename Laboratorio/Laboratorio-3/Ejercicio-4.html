@@ -32,9 +32,17 @@
 				let cadena = document.getElementById("link").value;
 				
 				// Verificador de cantidad de caracteres y guiones
-				if (cadena.length != 12 || cadena.match(/-/g).length != 2)
+				if (cadena.length != 12 || cadena.match(/-/g).length != 2) {
 					mostrar("Verifique el código ingresado.");
+				} else {
+					reemplazar(cadena);
+				}
+				console.log(cadena);
+			}
 
+			function reemplazar (cadena) {
+				cadenaModificada = cadena.replace(/-/g, "");
+				mostrar(cadenaModificada);
 			}
 
 			function mostrar (mensaje) {
