@@ -26,6 +26,21 @@
 		<p id="codigo"></p>
 
 		<script>
+
+			function verificar() {
+
+				let cadena = document.getElementById("link").value;
+				
+				// Verificador de cantidad de caracteres y guiones
+				if (cadena.length != 12 || cadena.match(/-/g).length != 2)
+					mostrar("Verifique el código ingresado.");
+
+			}
+
+			function mostrar (mensaje) {
+				document.getElementById("codigo").innerHTML = mensaje;
+			}
+
 		</script>
 	</body>
 </html>
