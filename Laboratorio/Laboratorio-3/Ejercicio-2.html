@@ -15,11 +15,20 @@
 	<body>
 		<h1>Palabra Invertida</h1>
 
-		<label for = "palabra">Ingrese la palabra a invertir:</label>
-		<input type = "text" id = "palabra">
-		
-		<button onclick = "palabraInvertir()">Invertir</button>
+		<label for="palabra">Ingrese la palabra a invertir:</label>
+		<input type="text" id="palabra">
 
-		<div id = "invertir"><div>
+		<button onclick="palabraInvertir()">Invertir</button>
+
+		<div id="invertir"></div>
+
+		<script>
+
+			function palabraInvertir() {
+				var palabra = document.getElementById("palabra").value;
+				alert(palabra);
+			}
+			
+		</script>
 	</body>
 </html>
