@@ -22,7 +22,7 @@
 			function calcularDia() {
 
 				// Fecha Actual
-				const actual = new Date(2025, 7, 16);         // Fecha de prueba por Commit
+				const actual = new Date();
 				let year = actual.getFullYear(), restante;
 
 				// Verificación por si se pasa el aniversario
@@ -34,13 +34,18 @@
 				const aniversario = new Date(year, 7, 15);
 
 				restante = aniversario - actual;
+				restante = Math.floor( restante / (1000 * 60 * 60 * 24) );
 
-				console.log(aniversario.toString());
-				console.log(actual.toString());
-				console.log(restante);
+				return restante;
 			}
 
-			calcularDia();
+			let mensaje = "Hoy es el Aniversario de Arequipa";
+
+			if (calcularDia() != 0) {
+				mensaje = "Faltan " + calcularDia() + " días para el aniversario de Arequipa";
+			}
+			
+			document.getElementById("aniversario").innerHTML = mensaje;
 
 		</script>
 	</body>
