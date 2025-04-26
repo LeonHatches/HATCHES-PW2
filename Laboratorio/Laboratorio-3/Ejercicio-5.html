@@ -35,36 +35,46 @@
 			<label for="columna">Ingrese cantidad de columnas:</label>
 			<input type="number" id="columna" min="1" max="20">
 
-			<button onclick="crearTabla()">Enviar</button>
+			<button onclick="crearTabla(), as()">Enviar</button>
 		</div>
 
 		<div id="tabla"></div>
+		<div id="botonSumar"></div>
 		<div id="sumatoria"></div>
 
 		<script>
 
 			function crearTabla () {
-
-				const FILA    = document.getElementById("fila").value;
-				const COLUMNA = document.getElementById("columna").value;
 				
-				let   tabla   = "<table>\n";
-				for (let i = 0 ; i < FILA ; i++) {
+				const BOTON   = '<button onclick="sumatoria">Sumar</button>';
+				const COLUMNA = document.getElementById("columna").value;
+				const FILA    = document.getElementById("fila").value;
+				
+				let   tabla   = '<table id="tabla">\n';
+				for (let i = 0 ; i < FILA ; i++) {					// Filas
 
 					tabla += "<tr>\n";
-					for (let j = 0 ; j < COLUMNA ; j++)
-					{
-						tabla += "<td>" + random() + "</td>\n";
+					for (let j = 0 ; j < COLUMNA ; j++)	{			// Columnas
+						tabla += "<td>" + random() + "</td>\n";		// Número Aleatorio
 					}
 					tabla += "</tr>\n";
 				}
 				tabla += "</table>\n";
 
-				document.getElementById("tabla").innerHTML = tabla;
+				mostrar(tabla, "tabla");
+				mostrar(BOTON, "botonSumar")
+			}
+
+			function sumatoria () {
+				
 			}
 
 			function random () {
 				return Math.floor(Math.random() * 9 + 1);
+			}
+
+			function mostrar (contenido, id) {
+				document.getElementById(id).innerHTML = contenido;
 			}
 
 		</script>
