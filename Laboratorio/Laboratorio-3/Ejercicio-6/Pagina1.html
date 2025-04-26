@@ -42,6 +42,15 @@
 				document.getElementById("texto").style.fontSize = size + "px";
 			}
 
+			function reducir () {
+
+				// Para que no exista una fuente de tamaño negativo o cero
+				if (size > 1)
+					size -= 1;
+				
+				document.getElementById("texto").style.fontSize = size + "px";
+			}
+
 		</script>
 	</body>
 </html>
