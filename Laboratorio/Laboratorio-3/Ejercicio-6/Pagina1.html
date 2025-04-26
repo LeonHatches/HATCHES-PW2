@@ -27,6 +27,7 @@
 		<script>
 
 			const COLORES = ["red", "green", "blue", "black", "orange", "Violet"];
+			var   size    = 16;
 
 			function color () {
 				document.getElementById("texto").style.color = COLORES[random()];
@@ -34,6 +35,11 @@
 
 			function random () {
 				return Math.floor(Math.random() * 6);
+			}
+
+			function aumentar () {
+				size += 1;
+				document.getElementById("texto").style.fontSize = size + "px";
 			}
 
 		</script>
