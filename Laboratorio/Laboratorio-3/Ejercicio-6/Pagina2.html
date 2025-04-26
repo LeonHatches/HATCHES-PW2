@@ -12,10 +12,43 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title></title>
+		<title>Calculadora</title>
 	</head>
 
 	<body>
+		<h1>Calculadora</h1>
+		
+		<div>
+			<p>Ingrese dos valores. Números para aritmética y binarias; "True" y "False" para lógicas:</p>
+			
+			<!--Variable-->
+			<input type="text" id="argumento1">
+			
+			<!--Operador-->
+			<select>
+				<option value="+">+</option>
+				<option value="-">-</option>
+				<option value="*">x</option>
+				<option value="/">/</option>
+				<option value="**">**</option>
+				<option value="%">mod</option>
+				<option value="&&">&&</option>
+				<option value="||">||</option>
+				<option value="!">~</option>
+				<option value="AND">AND</option>
+				<option value="OR">OR</option>
+				<option value="XOR">XOR</option>
+				<option value="NOT">NOT</option>
+				<option value="<<"><<</option>
+				<option value=">>">>></option>
+			</select>
+			
+			<!--Variable-->
+			<input type="text" id="argumento2">
+
+			<button onclick="">Calcular</button>
+		</div>
+
 		<script>
 		</script>
 	</body>
