@@ -30,15 +30,15 @@
 
 		<div>
 			<label for="fila">Ingrese cantidad de filas:</label>
-			<input type="number" id="fila" min="1" max="20">
+			<input type="number" id="fila">
 
 			<label for="columna">Ingrese cantidad de columnas:</label>
-			<input type="number" id="columna" min="1" max="20">
+			<input type="number" id="columna">
 
-			<button onclick="crearTabla(), as()">Enviar</button>
+			<button onclick="crearTabla()">Enviar</button>
 		</div>
 
-		<div id="tabla"></div>
+		<div id="mostrarTabla"></div>
 		<div id="botonSumar"></div>
 		<div id="sumatoria"></div>
 
@@ -46,7 +46,7 @@
 
 			function crearTabla () {
 				
-				const BOTON   = '<button onclick="sumatoria">Sumar</button>';
+				const BOTON   = '<button onclick="sumatoria()">Sumar</button>';
 				const COLUMNA = document.getElementById("columna").value;
 				const FILA    = document.getElementById("fila").value;
 				
@@ -61,12 +61,24 @@
 				}
 				tabla += "</table>\n";
 
-				mostrar(tabla, "tabla");
+				mostrar(tabla, "mostrarTabla");
 				mostrar(BOTON, "botonSumar")
 			}
 
 			function sumatoria () {
 				
+				const tabla = document.getElementById("tabla");
+				let   suma = 0;
+
+				for (let i = 0 ; i < tabla.rows.length ; i++) {
+
+					for (let j = 0 ; j < tabla.rows[i].cells.length ; j++) {
+						suma += parseInt(tabla.rows[i].cells[j].textContent);
+					}
+				}
+
+				const MENSAJE = "<h3>La suma total de la tabla es: " + suma + ".</h2>";
+				mostrar (MENSAJE, "sumatoria");
 			}
 
 			function random () {
