@@ -3,7 +3,7 @@
     (largo x ancho) y que al enviar se genere una tabla y que dentro de sus
     celdas tengan valores aleatorios, con ello un botón que sume todos.
 
-    La solución será utilizar un formulario con el evento de onsubmit para
+    La solución será utilizar inputs y un button para la entrada de datos como
     enviar la cantidad de filas y columnas. Luego con un math.random inicializar
     la tabla con los datos aleatorios. Luego, hacerlo aparecer en una tabla con
     un botón que llame a una función que obtenga los valores de la tabla con
@@ -14,25 +14,59 @@
 <html>
 	<head>
 		<title>Tabla Aleatoria</title>
+
+		<style type="text/css">
+
+			table, tr, td { border: 1px solid; }
+			table         { border-collapse: collapse; margin: 20px; }
+			tr, td        { padding: 20px; }
+
+		</style>
+
 	</head>
 
 	<body>
 		<h1>Tabla de Números Aleatoria</h1>
 
-		<form onsubmit="">
+		<div>
 			<label for="fila">Ingrese cantidad de filas:</label>
 			<input type="number" id="fila" min="1" max="20">
 
 			<label for="columna">Ingrese cantidad de columnas:</label>
 			<input type="number" id="columna" min="1" max="20">
 
-			<input type="submit" value="Enviar">
-		</form>
+			<button onclick="crearTabla()">Enviar</button>
+		</div>
 
 		<div id="tabla"></div>
 		<div id="sumatoria"></div>
 
 		<script>
+
+			function crearTabla () {
+
+				const FILA    = document.getElementById("fila").value;
+				const COLUMNA = document.getElementById("columna").value;
+				
+				let   tabla   = "<table>\n";
+				for (let i = 0 ; i < FILA ; i++) {
+
+					tabla += "<tr>\n";
+					for (let j = 0 ; j < COLUMNA ; j++)
+					{
+						tabla += "<td>" + random() + "</td>\n";
+					}
+					tabla += "</tr>\n";
+				}
+				tabla += "</table>\n";
+
+				document.getElementById("tabla").innerHTML = tabla;
+			}
+
+			function random () {
+				return Math.floor(Math.random() * 9 + 1);
+			}
+
 		</script>
 	</body>
 </html>
