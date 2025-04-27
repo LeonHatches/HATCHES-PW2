@@ -72,27 +72,28 @@
 			function verificar (argumento1, argumento2, operador) {
 
 				// Si ambos son bits
-				if (parseInt(argumento1, 2) && parseInt(argumento2, 2) && OP_BITS.includes(operador) ) {
+				if (   !isNaN(parseInt(argumento1, 2))
+					&& !isNaN(parseInt(argumento2, 2)) && OP_BITS.includes(operador) ) {
 					operacionBits(argumento1, argumento2, operador);
 				}
 
 				// Si se desea una negatividad de Bits
-				else if (isEmpty(argumento1) && parseInt(argumento2, 2) && operador === "NOT") {
+				else if (isEmpty(argumento1) && !isNaN(parseInt(argumento2, 2)) && operador === "NOT") {
 					operacionBitsNegativa(argumento1, argumento2, operador);
 				}
 
 				// Si ambos son números
-				else if (parseInt(argumento1) && parseInt(argumento2) && OP_MATH.includes(operador)) {
+				else if ( !isNaN(Number(argumento1)) && !isNaN(Number(argumento2)) && OP_MATH.includes(operador)) {
 					operacionNumerica(argumento1, argumento2, operador);
 				}
 
 				// Si se desea un negativo de un booleano
-				else if (isEmpty(argumento1) && parseBoolean(argumento2) && operador === "!") {
+				else if (isEmpty(argumento1) && isBoolean(argumento2) && operador === "!") {
 					operacionLogicaNegativa(argumento1, argumento2, operador);
 				}
 
 				// Si ambos son datos booleanos
-				else if (parseBoolean(argumento1) && parseBoolean(argumento2) && OP_LOG.includes(operador)) {
+				else if (isBoolean(argumento1) && isBoolean(argumento2) && OP_LOG.includes(operador)) {
 					operacionLogica(argumento1, argumento2, operador);
 				}
 
@@ -171,6 +172,10 @@
 
 			function operacionLogica (argumento1, argumento2, operador) {
 				// Usar probablemente un switch
+			}
+
+			function isBoolean (valor) {
+
 			}
 
 			function parseBoolean (valor) {
