@@ -79,7 +79,7 @@
 
 				// Si se desea una negatividad de Bits
 				else if (isEmpty(argumento1) && !isNaN(parseInt(argumento2, 2)) && operador === "NOT") {
-					operacionBitsNegativa(argumento1, argumento2, operador);
+					operacionBitsNegativa(argumento2);
 				}
 
 				// Si ambos son números
@@ -89,7 +89,7 @@
 
 				// Si se desea un negativo de un booleano
 				else if (isEmpty(argumento1) && isBoolean(argumento2) && operador === "!") {
-					operacionLogicaNegativa(argumento1, argumento2, operador);
+					operacionLogicaNegativa(argumento2);
 				}
 
 				// Si ambos son datos booleanos
@@ -119,7 +119,7 @@
 						resultado = bits1 ^ bits2; break;
 				}
 
-				mostrar(resultado);
+				mostrar(resultado.toString(2));
 			}
 
 			function operacionNumerica (argumento1, argumento2, operador) {
@@ -162,11 +162,22 @@
 				mostrar(resultado);
 			}
 
-			function operacionBitsNegativa (argumento1, argumento2, operador) {
-				// Usar probablemente un solo return
+			function operacionBitsNegativa (argumento2) {
+				
+				let resultado = "";
+
+				for (let x of argumento2) {
+
+					if (x == "0")
+						resultado += "1";
+					else
+						resultado += "0";
+				}
+
+				mostrar(resultado);
 			}
 
-			function operacionLogicaNegativa (argumento1, argumento2, operador) {
+			function operacionLogicaNegativa (argumento2, operador) {
 				// Usar probablemente un solo return
 			}
 
