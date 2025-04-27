@@ -19,13 +19,13 @@
 		<h1>Calculadora</h1>
 		
 		<div>
-			<p>Ingrese dos valores. Números para aritmética y binarias; "True" y "False" para lógicas:</p>
+			<p>Ingrese dos valores. Números para aritmética y binarias; "V" y "F" para lógicas:</p>
 			
 			<!--Variable-->
 			<input type="text" id="argumento1">
 			
 			<!--Operador-->
-			<select>
+			<select id="operador">
 				<option value="+">+</option>
 				<option value="-">-</option>
 				<option value="*">x</option>
@@ -46,10 +46,83 @@
 			<!--Variable-->
 			<input type="text" id="argumento2">
 
-			<button onclick="">Calcular</button>
+			<button onclick="calcular()">Calcular</button>
 		</div>
 
+		<div id="resultado"></div>
+
 		<script>
+
+			// Para verificar en la función verificar()
+			const OP_BITS = ["OR", "AND", "XOR", "NOT", "<<", ">>"];
+			const OP_MATH = ["+", "-", "*", "/", "**", "%"];
+			const OP_LOG  = ["&&", "||", "!"];
+
+			function calcular () {
+
+				const argumento1 = document.getElementById("argumento1").value;
+				const argumento2 = document.getElementById("argumento2").value;
+				const operador   = document.getElementById("operador").value;
+
+				verificar(argumento1, argumento2, operador);
+			}
+
+			function verificar (argumento1, argumento2, operador) {
+
+				// Si ambos son bits
+				if (parseInt(argumento1, 2) && parseInt(argumento2, 2) && OP_BITS.includes(operador) ) {
+					operacionBits(argumento1, argumento2, operador);
+				}
+
+				// Si se desea una negatividad de Bits
+				else if (isEmpty(argumento1) && parseInt(argumento2, 2) && operador === "NOT") {
+					operacionBitsNegativa(argumento1, argumento2, operador);
+				}
+
+				// Si se desea un negativo de un booleano
+				else if (isEmpty(argumento1) && parseBoolean(argumento2)) {
+					operacionLogicaNegativa(argumento1, argumento2, operador);
+				}
+
+				// Si ambos son datos booleanos
+				else if (parseBoolean(argumento1) && parseBoolean(argumento2)) {
+					operacionLogica(argumento1, argumento2, operador);
+				}
+
+				// Si no se cumple ninguna de las operaciones
+				else {
+					mostrar("Ingrese argumentos válidos.");
+				}
+			}
+
+			function operacionNumericaYBits (argumento1, argumento2, operador) {
+				// Usar probablemente un switch
+			}
+
+			function operacionBitsNegativa (argumento1, argumento2, operador) {
+				// Usar probablemente un solo return
+			}
+
+			function operacionLogicaNegativa (argumento1, argumento2, operador) {
+				// Usar probablemente un solo return
+			}
+
+			function operacionLogica (argumento1, argumento2, operador) {
+				// Usar probablemente un switch
+			}
+
+			function parseBoolean (valor) {
+				
+			}
+
+			function isEmpty (cadena) {
+				return cadena.length === 0;
+			}
+
+			function mostrar (mensaje) {
+				document.getElementById("resultado").innerHTML = mensaje;
+			}
+
 		</script>
 	</body>
 </html>
