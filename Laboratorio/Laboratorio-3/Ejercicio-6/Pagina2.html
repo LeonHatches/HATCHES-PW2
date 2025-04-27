@@ -39,8 +39,6 @@
 				<option value="OR">OR</option>
 				<option value="XOR">XOR</option>
 				<option value="NOT">NOT</option>
-				<option value="<<"><<</option>
-				<option value=">>">>></option>
 			</select>
 			
 			<!--Variable-->
@@ -49,14 +47,17 @@
 			<button onclick="calcular()">Calcular</button>
 		</div>
 
+		<p>Resultado:</p>
 		<div id="resultado"></div>
 
 		<script>
+			// Resultado a usar en las funciones
+			let resultado;
 
 			// Para verificar en la función verificar()
-			const OP_BITS = ["OR", "AND", "XOR", "NOT", "<<", ">>"];
+			const OP_BITS = ["OR", "AND", "XOR"];
 			const OP_MATH = ["+", "-", "*", "/", "**", "%"];
-			const OP_LOG  = ["&&", "||", "!"];
+			const OP_LOG  = ["&&", "||"];
 
 			function calcular () {
 
@@ -79,13 +80,18 @@
 					operacionBitsNegativa(argumento1, argumento2, operador);
 				}
 
+				// Si ambos son números
+				else if (parseInt(argumento1, 2) && parseInt(argumento2, 2) && OP_MATH.includes(operador)) {
+					operacionNumerica(argumento1, argumento2, operador);
+				}
+
 				// Si se desea un negativo de un booleano
-				else if (isEmpty(argumento1) && parseBoolean(argumento2)) {
+				else if (isEmpty(argumento1) && parseBoolean(argumento2) && operador === "!") {
 					operacionLogicaNegativa(argumento1, argumento2, operador);
 				}
 
 				// Si ambos son datos booleanos
-				else if (parseBoolean(argumento1) && parseBoolean(argumento2)) {
+				else if (parseBoolean(argumento1) && parseBoolean(argumento2) && OP_LOG.includes(operador)) {
 					operacionLogica(argumento1, argumento2, operador);
 				}
 
@@ -95,7 +101,24 @@
 				}
 			}
 
-			function operacionNumericaYBits (argumento1, argumento2, operador) {
+			function operacionBits (argumento1, argumento2, operador) {
+				
+				let bits1 = parseInt(argumento1, 2);
+				let bits2 = parseInt(argumento2, 2);
+
+				switch (operador) {
+					case "OR":
+						resultado = bits1 | bits2; break;
+					case "AND":
+						resultado = bits1 & bits2; break;
+					case "XOR":
+						resultado = bits1 ^ bits2; break;
+				}
+
+				mostrar(resultado);
+			}
+
+			function operacionNumerica (argumento1, argumento2, operador) {
 				// Usar probablemente un switch
 			}
 
@@ -112,7 +135,7 @@
 			}
 
 			function parseBoolean (valor) {
-				
+				// Un return que regrese el booleano ingresado
 			}
 
 			function isEmpty (cadena) {
