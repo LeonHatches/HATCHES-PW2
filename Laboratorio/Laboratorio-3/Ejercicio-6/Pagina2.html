@@ -124,8 +124,8 @@
 
 			function operacionNumerica (argumento1, argumento2, operador) {
 				
-				let numero1 = parseInt(argumento1);
-				let numero2 = parseInt(argumento2);
+				let numero1 = parseFloat(argumento1);
+				let numero2 = parseFloat(argumento2);
 
 				switch (operador) {
 					case "+":
@@ -177,12 +177,24 @@
 				mostrar(resultado);
 			}
 
-			function operacionLogicaNegativa (argumento2, operador) {
-				// Usar probablemente un solo return
+			function operacionLogicaNegativa (argumento2) {
+				mostrar(!parseBoolean(argumento2));
 			}
 
 			function operacionLogica (argumento1, argumento2, operador) {
-				// Usar probablemente un switch
+				let boolean1 = parseBoolean(argumento1);
+				let boolean2 = parseBoolean(argumento2);
+
+				switch (operador) {
+
+					case "&&":
+						resultado = boolean1 && boolean2; break;
+
+					case "||":
+						resultado = boolean1 || boolean2; break;
+				}
+
+				mostrar(resultado);
 			}
 
 			function isBoolean (valor) {
@@ -192,7 +204,7 @@
 			}
 
 			function parseBoolean (valor) {
-				return (valor == "V") ? true : false;
+				return (valor.toUpperCase() == "V") ? true : false;
 			}
 
 			function isEmpty (cadena) {
