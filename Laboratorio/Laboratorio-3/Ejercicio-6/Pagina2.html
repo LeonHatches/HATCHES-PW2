@@ -58,6 +58,7 @@
 			const OP_BITS = ["OR", "AND", "XOR"];
 			const OP_MATH = ["+", "-", "*", "/", "**", "%"];
 			const OP_LOG  = ["&&", "||"];
+			const ERROR   = "Ingrese argumentos válidos.";
 
 			function calcular () {
 
@@ -81,7 +82,7 @@
 				}
 
 				// Si ambos son números
-				else if (parseInt(argumento1, 2) && parseInt(argumento2, 2) && OP_MATH.includes(operador)) {
+				else if (parseInt(argumento1) && parseInt(argumento2) && OP_MATH.includes(operador)) {
 					operacionNumerica(argumento1, argumento2, operador);
 				}
 
@@ -97,7 +98,7 @@
 
 				// Si no se cumple ninguna de las operaciones
 				else {
-					mostrar("Ingrese argumentos válidos.");
+					mostrar(ERROR);
 				}
 			}
 
@@ -109,8 +110,10 @@
 				switch (operador) {
 					case "OR":
 						resultado = bits1 | bits2; break;
+
 					case "AND":
 						resultado = bits1 & bits2; break;
+
 					case "XOR":
 						resultado = bits1 ^ bits2; break;
 				}
@@ -119,7 +122,43 @@
 			}
 
 			function operacionNumerica (argumento1, argumento2, operador) {
-				// Usar probablemente un switch
+				
+				let numero1 = parseInt(argumento1);
+				let numero2 = parseInt(argumento2);
+
+				switch (operador) {
+					case "+":
+						resultado = numero1 + numero2; break;
+
+					case "-":
+						resultado = numero1 - numero2; break;
+
+					case "*":
+						resultado = numero1 * numero2; break;
+
+					case "/":
+
+						if (numero2 == 0)
+							resultado = ERROR;
+						else
+							resultado = numero1 / numero2;
+
+						break;
+
+					case "**":
+						resultado = numero1 ** numero2; break;
+
+					case "%":
+
+						if (numero2 == 0)
+							resultado = ERROR;
+						else
+							resultado = numero1 % numero2;
+
+						break;
+				}
+
+				mostrar(resultado);
 			}
 
 			function operacionBitsNegativa (argumento1, argumento2, operador) {
