@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function crearSelects (xhttp) {
 
-	const data = JSON.parse(xhttp.responseText);
+	var data = JSON.parse(xhttp.responseText);
 	let lista1 = "<select id = 'region1'>";
 	let lista2 = "<select id = 'region2'>";
 	const boton = "<br><button onclick='comparar()'>Comparar</button>";
@@ -41,4 +41,16 @@ function crearOptions (data) {
 
 function comparar () {
 
+	// Los datos del Select
+	region1 = document.getElementById("region1").value;
+	region2 = document.getElementById("region2").value;
+
+	// API de Google Charts
+	google.charts.load('current', {'packages':['corechart']});
+	google.charts.setOnLoadCallback(drawChart);
+
+	// Grafico
+	var grafico = new google.visualization.DataTable();
+	grafico.addColumn('string', 'Topping');
+	grafico.addColumn('number', 'Slices');
 }
