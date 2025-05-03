@@ -1,9 +1,13 @@
 
+// Obtener los datos
+let data;
+
 document.addEventListener('DOMContentLoaded', function () {
 
 	const xhttp = new XMLHttpRequest();
 	
-	xhttp.onload = function () {	
+	xhttp.onload = function () {
+		data = JSON.parse(xhttp.responseText);	
 		crearSelects(xhttp);
 	}
 
@@ -14,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function crearSelects (xhttp) {
 
-	var data = JSON.parse(xhttp.responseText);
 	let lista1 = "<select id = 'region1'>";
 	let lista2 = "<select id = 'region2'>";
 	const boton = "<br><button onclick='comparar()'>Comparar</button>";
@@ -52,7 +55,7 @@ function comparar () {
 	// API de Google Charts
 	google.charts.load('current', {'packages':['corechart']});
 	google.charts.setOnLoadCallback(drawChart);
-
+	
 	// Grafico
 	var grafico = new google.visualization.DataTable();
 	grafico.addColumn('string', 'Topping');
