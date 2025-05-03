@@ -4,12 +4,14 @@ const xhttp = new XMLHttpRequest();
 xhttp.onload = function () {
 
 	const Confirmados = crearArregloSuma(xhttp);
-	let lista = devolverMayores (Confirmados);
+	let   lista       = devolverMayores (Confirmados);
 
 	document.getElementById("Lista").innerHTML = lista;
 }
+
 xhttp.open("GET", "data.JSON");
 xhttp.send();
+
 
 function crearArregloSuma (xhttp) {
 	
@@ -26,15 +28,23 @@ function crearArregloSuma (xhttp) {
 			suma += parseInt(pais[i].confirmed[j].value);
 		}
 
-		Confirmados.push({"region": pais[i].region, "Confirmados": suma});
+		Confirmados.push({"region": pais[i].region, "total": suma});
 	}
 
-	// Se crea un arreglo con forma de [ {"region": ..., "Confirmados": ...} , ... ]
-	// Se hará un for que sume cada uno de los confirmados de las fechas y luego
-	// agregue al final del arreglo los objetos
+	return Confirmados;
 }
 
+
 function devolverMayores (Confirmados) {
-	// Se hará un sort al valor de confirmado
-	// Se hará un for para colocarlo en cadena y mostrarlo como lista ordenada
+
+	let lista = "<ol>";
+	Confirmados.sort(function(a, b){return b.total - a.total});
+
+	// Forma de Lista de los 10 mayor número de confirmados
+	for (let i = 0 ; i < 10 ; i++) {
+		lista += "<li>" + Confirmados[i].region + ": " + Confirmados[i].total + "</li>";
+	}
+
+	lista += "</ol>";
+	return lista;
 }
