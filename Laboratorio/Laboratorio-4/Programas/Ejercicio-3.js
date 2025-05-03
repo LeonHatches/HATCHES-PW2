@@ -14,7 +14,20 @@ xhttp.send();
 function crearArregloSuma (xhttp) {
 	
 	const pais = JSON.parse(xhttp.responseText);
-	let suma = 0;
+	const Confirmados = [];
+
+	// Acceso a cada region
+	for (let i = 0 ; i < pais.length ; i++) {
+		
+		let suma = 0;
+
+		// Suma de los confirmados
+		for (let j = 0 ; j < pais[i].confirmed.length ; j++) {
+			suma += parseInt(pais[i].confirmed[j].value);
+		}
+
+		Confirmados.push({"region": pais[i].region, "Confirmados": suma});
+	}
 
 	// Se crea un arreglo con forma de [ {"region": ..., "Confirmados": ...} , ... ]
 	// Se hará un for que sume cada uno de los confirmados de las fechas y luego
