@@ -2,10 +2,10 @@ const xhttp = new XMLHttpRequest();
 
 xhttp.onload = function () {
 
-	let lista = crearLista(this);
+	let lista = crearLista(xhttp);
 	document.getElementById("Lista").innerHTML = lista;
 }
-xhttp.open("GET", "../data.JSON");
+xhttp.open("GET", "data.JSON");
 xhttp.send();
 
 function crearLista (xhttp) {
@@ -13,8 +13,8 @@ function crearLista (xhttp) {
 	const pais = JSON.parse(xhttp.responseText);
 	let lista = "<ul>";
 
-	for (let i = 0 ; i < length ; i++ ) {
-		lista += "<li>" + pais.region[i] + "</li>";
+	for (let i = 0 ; i < pais.length ; i++ ) {
+		lista += "<li>" + pais[i].region + "</li>";
 	}
 
 	lista += "</ul>";
