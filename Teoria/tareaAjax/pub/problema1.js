@@ -31,7 +31,7 @@ function crearOptions (data) {
 	let lista = "";
 
 	for (let i = 0 ; i < data.length ; i++) {
-		lista += "<option value='" + data[i].region + "'>" + data[i].region + "</option>";
+		lista += "<option value='" + i + "'>" + data[i].region + "</option>";
 	}
 
 	lista += "</select>";
@@ -42,8 +42,12 @@ function crearOptions (data) {
 function comparar () {
 
 	// Los datos del Select
-	region1 = document.getElementById("region1").value;
-	region2 = document.getElementById("region2").value;
+	let region1 = document.getElementById("region1").value;
+	let region2 = document.getElementById("region2").value;
+	region1 = parseInt(region1);
+	region2 = parseInt(region2);
+	let ultimoDato1 = data[region1].confirmed.length - 1;
+	let ultimoDato2 = data[region2].confirmed.length - 1;
 
 	// API de Google Charts
 	google.charts.load('current', {'packages':['corechart']});
@@ -53,4 +57,11 @@ function comparar () {
 	var grafico = new google.visualization.DataTable();
 	grafico.addColumn('string', 'Topping');
 	grafico.addColumn('number', 'Slices');
+	grafico.addRows([
+		[data[region1].region, data[region1].confirmed[ultimoDato1].value],
+		[data[region2].region, data[region2].confirmed[ultimoDato2].value]
+	]);
+
+	// Opciones
+	var options = {'title':'Gráfico Comparativo de la última fecha de Confirmados', 'width':400, 'height':300};
 }
