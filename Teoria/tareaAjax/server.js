@@ -13,6 +13,6 @@ app.get('/problema1.html', (request, response) => {
 });
 
 app.get('/data.json', (request, response) => {
-	const data = require('data.json');
+	const data = require('data.JSON');
   response.json(data);
 });

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		crearSelect(xhttp);
 	}
 
-	xhttp.open('GET', './data.json');
+	xhttp.open('GET', 'data.json');
 	xhttp.send();
 
 });
