@@ -63,14 +63,14 @@ function comparar () {
 		grafico.addColumn('string', 'Topping');
 		grafico.addColumn('number', 'Slices');
 		grafico.addRows([
-			[data[region1].region, data[region1].confirmed[ultimoDato1].value],
-			[data[region2].region, data[region2].confirmed[ultimoDato2].value]
+			[data[region1].region, parseInt(data[region1].confirmed[ultimoDato1].value)],
+			[data[region2].region, parseInt(data[region2].confirmed[ultimoDato2].value)]
 		]);
 
 		// Opciones
 		var options = {'title':'Gráfico Comparativo de la última fecha de Confirmados',
-									 'width':400,
-									 'height':300};
+									 'width':600,
+									 'height':500};
 		
 		var chart = new google.visualization.PieChart(document.getElementById("grafico"));
 		chart.draw(grafico, options);
