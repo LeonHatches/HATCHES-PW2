@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function crearSelect () {
 
-	const boton = "<br><button onclick='crecimiento()'>Ver</button>"
+	const boton = "<br><button onclick='crecimiento()'>Ver</button>";
 	let lista = "<select id = 'region'>";
 	lista += crearOptions();
 
@@ -49,21 +49,20 @@ function crecimiento () {
 	google.charts.setOnLoadCallback(drawChart);
 
 	function drawChart () {
-
 		// Grafico
-	  var grafico = new google.visualization.DataTable();
-	  grafico.addColumn("string", "Fecha");
-	  grafico.addColumn("number", "Contagios");
-
-    agregarDatos(grafico, region);
-
-    // Opciones
-		var options = {'title':'Gráfico Comparativo de Crecimiento por Fechas de '+data[region].region,
-									 'width':1300,
-									 'height':500};
-
+		var grafico = new google.visualization.DataTable();
+		grafico.addColumn("string", "Fecha");
+		grafico.addColumn("number", "Contagios");
+		
+		agregarDatos(grafico, region);
+	
+	    	// Opciones
+		var options = {'title':'Gráfico Comparativo de Crecimiento por Fechas de ' + data[region].region,
+			       'width':1300,
+			       'height':500};
+	
 		var chart = new google.visualization.AreaChart(document.getElementById('grafico'));
-        chart.draw(grafico, options);
+	        chart.draw(grafico, options);
 	}
 }
 
