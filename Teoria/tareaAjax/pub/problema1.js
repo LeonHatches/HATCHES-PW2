@@ -55,16 +55,24 @@ function comparar () {
 	// API de Google Charts
 	google.charts.load('current', {'packages':['corechart']});
 	google.charts.setOnLoadCallback(drawChart);
-	
-	// Grafico
-	var grafico = new google.visualization.DataTable();
-	grafico.addColumn('string', 'Topping');
-	grafico.addColumn('number', 'Slices');
-	grafico.addRows([
-		[data[region1].region, data[region1].confirmed[ultimoDato1].value],
-		[data[region2].region, data[region2].confirmed[ultimoDato2].value]
-	]);
 
-	// Opciones
-	var options = {'title':'Gráfico Comparativo de la última fecha de Confirmados', 'width':400, 'height':300};
+	function drawChart () {
+
+		// Grafico
+		var grafico = new google.visualization.DataTable();
+		grafico.addColumn('string', 'Topping');
+		grafico.addColumn('number', 'Slices');
+		grafico.addRows([
+			[data[region1].region, data[region1].confirmed[ultimoDato1].value],
+			[data[region2].region, data[region2].confirmed[ultimoDato2].value]
+		]);
+
+		// Opciones
+		var options = {'title':'Gráfico Comparativo de la última fecha de Confirmados',
+									 'width':400,
+									 'height':300};
+		
+		var chart = new google.visualization.PieChart(document.getElementById("grafico"));
+		chart.draw(grafico, options);
+	}
 }
