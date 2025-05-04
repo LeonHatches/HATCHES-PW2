@@ -54,13 +54,22 @@ function comparar () {
     ]);
 
     grafico = agregarDatos(grafico, region);
+
+    // Opciones
+		var options = {'title':'Gráfico Comparativo de Crecimiento por Fechas',
+									 'opacity':0,
+									 'width':600,
+									 'height':500};
+
+		var chart = new google.visualization.AreaChart(document.getElementById('grafico'));
+        chart.draw(grafico, options);
 	}
 }
 
 function agregarDatos (grafico, region) {
 
 	for (let i = 0 ; data[region].confirmed.length ; i++) {
-		grafico.addRows(
+		grafico.addRow(
 			[data[region].confirmed[i].date,
 			 parseInt(data[region].confirmed[i].value)]
 		)
