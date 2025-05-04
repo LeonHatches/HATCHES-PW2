@@ -1,16 +1,26 @@
 {
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "license": "^1.0.3"
   },
-  "name": "tareaajax",
+  "name": "tarea-ajax",
   "version": "1.0.0",
-  "main": "index.js",
-  "devDependencies": {},
+  "main": "problema1.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "author": "jhatches@unsa.edu.pe",
+  "license": "MIT",
+  "description": "Contiene los dos problemas resueltos de Teoria",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeonHatches/HATCHES-PW2.git#Tarea-Ajax"
+  },
+  "bugs": {
+    "url": "https://github.com/LeonHatches/HATCHES-PW2/issues"
+  },
+  "homepage": "https://github.com/LeonHatches/HATCHES-PW2/tree/Tarea-Ajax#readme"
 }
