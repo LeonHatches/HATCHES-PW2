@@ -18,11 +18,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function crearSelect () {
 
+	const boton = "<br><button onclick='crecimiento()'>Ver</button>"
 	let lista = "<select id = 'region'>";
 	lista += crearOptions();
 
 	document.getElementById("lista").innerHTML = lista;
-	comparar();
+	document.getElementById("boton").innerHTML = boton;
 }
 
 function crearOptions () {
@@ -36,7 +37,7 @@ function crearOptions () {
 	return lista;
 }
 
-function comparar () {
+function crecimiento () {
 	
 	// Los datos del Select
 	let region = document.getElementById("region").value;
@@ -49,16 +50,15 @@ function comparar () {
 	function drawChart () {
 
 		// Grafico
-	  var grafico = google.visualization.arrayToDataTable([
-	  	['Fecha', 'Contagios']
-    ]);
+	  var grafico = new google.visualization.DataTable();
+	  grafico.addColumn("string", "Fecha");
+	  grafico.addColumn("number", "Contagios");
 
-    grafico = agregarDatos(grafico, region);
+    agregarDatos(grafico, region);
 
     // Opciones
-		var options = {'title':'Gráfico Comparativo de Crecimiento por Fechas',
-									 'opacity':0,
-									 'width':600,
+		var options = {'title':'Gráfico Comparativo de Crecimiento por Fechas de '+data[region].region,
+									 'width':1300,
 									 'height':500};
 
 		var chart = new google.visualization.AreaChart(document.getElementById('grafico'));
@@ -68,7 +68,7 @@ function comparar () {
 
 function agregarDatos (grafico, region) {
 
-	for (let i = 0 ; data[region].confirmed.length ; i++) {
+	for (let i = 0 ; i < data[region].confirmed.length ; i++) {
 		grafico.addRow(
 			[data[region].confirmed[i].date,
 			 parseInt(data[region].confirmed[i].value)]
