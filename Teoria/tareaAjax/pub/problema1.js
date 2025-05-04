@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	
 	xhttp.onload = function () {
 		data = JSON.parse(xhttp.responseText);	
-		crearSelects(xhttp);
+		crearSelects();
 	}
 
 	xhttp.open('GET', 'data.json');
@@ -16,21 +16,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-function crearSelects (xhttp) {
+function crearSelects () {
 
 	let lista1 = "<select id = 'region1'>";
 	let lista2 = "<select id = 'region2'>";
 	const boton = "<br><button onclick='comparar()'>Comparar</button>";
 
-	lista1 += crearOptions(data);
-	lista2 += crearOptions(data);
+	lista1 += crearOptions();
+	lista2 += crearOptions();
 
 	document.getElementById("lista1").innerHTML = lista1;
 	document.getElementById("lista2").innerHTML = lista2;
 	document.getElementById("botonComparar").innerHTML = boton;
 }
 
-function crearOptions (data) {
+function crearOptions () {
 	let lista = "";
 
 	for (let i = 0 ; i < data.length ; i++) {
