@@ -22,6 +22,7 @@ function crearSelect () {
 	lista += crearOptions();
 
 	document.getElementById("lista").innerHTML = lista;
+	comparar();
 }
 
 function crearOptions () {
@@ -33,4 +34,19 @@ function crearOptions () {
 
 	lista += "</select>";
 	return lista;
+}
+
+function comparar () {
+	
+	// Los datos del Select
+	let region = document.getElementById("region").value;
+	region = parseInt(region);
+
+	// API de Google Charts
+	google.charts.load('current', {'packages':['corechart']});
+	google.charts.setOnLoadCallback(drawChart);
+
+	function drawChart () {
+		
+	}
 }
