@@ -47,6 +47,22 @@ function comparar () {
 	google.charts.setOnLoadCallback(drawChart);
 
 	function drawChart () {
-		
+
+		// Grafico
+	  var grafico = google.visualization.arrayToDataTable([
+	  	['Fecha', 'Contagios']
+    ]);
+
+    grafico = agregarDatos(grafico, region);
+	}
+}
+
+function agregarDatos (grafico, region) {
+
+	for (let i = 0 ; data[region].confirmed.length ; i++) {
+		grafico.addRows(
+			[data[region].confirmed[i].date,
+			 parseInt(data[region].confirmed[i].value)]
+		)
 	}
 }
