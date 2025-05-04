@@ -30,7 +30,8 @@ function crearOptions () {
 	let lista = "";
 
 	for (let i = 0 ; i < data.length ; i++) {
-		lista += "<option value='" + i + "'>" + data[i].region + "</option>";
+		if (data[i].region != "Callao" && data[i].region != "Lima")
+			lista += "<option value='" + i + "'>" + data[i].region + "</option>";
 	}
 
 	lista += "</select>";
