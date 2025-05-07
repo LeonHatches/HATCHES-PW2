@@ -19,11 +19,11 @@ function mostrarGrafico (data) {
 		agregarDatos(grafico, data);
 
 		var options = {
-			hAxis: { title: "Fecha" },
-      vAxis: { title: "Contagios" },
+			hAxis: { title: "Días" },
+      vAxis: { title: "Cantidad de Contagios" },
 			"title": "Gráfico Comparativo entre Regiones del Perú",
-			"width": 1300,
-			"height":3000
+			"width": 1500,
+			"height": 3000
 		};
 
 		var mostrar = new google.visualization.LineChart(document.getElementById("Grafico"));
@@ -42,8 +42,8 @@ function agregarDatos (grafico, data) {
 	
 	// Agrega las fechas
 	for (let i = 0 ; i < 1 ; i++) {
-		for (let j = 0 ; j < data[i].confirmed.length ; j++) {
-			Rows.push( [data[i].confirmed[j].date] );
+		for (let j = 0 ; j < data[i].confirmed.length - 1 ; j++) {
+			Rows.push( [`${j + 1}`] );
 		}
 	}
 
