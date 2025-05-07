@@ -64,8 +64,8 @@ function comparar () {
 
 		// Opciones
 		var options = {'title':'Gráfico Comparativo entre '+data[region1].region+' y '+data[region2].region,
-									 'width':600,
-									 'height':500};
+									 'width':1500,
+									 'height':1000};
 		
 		var chart = new google.visualization.LineChart(document.getElementById("grafico"));
 		chart.draw(grafico, options);
