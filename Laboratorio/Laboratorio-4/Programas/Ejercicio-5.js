@@ -16,14 +16,14 @@ function mostrarGrafico (data) {
 		
 		grafico.addColumn("string", "Fecha");
 
-		agregarDatos(data);
+		agregarDatos(grafico, data);
 
 		var options = {
 			hAxis: { title: "Fecha" },
       vAxis: { title: "Contagios" },
-			"title": "Grafico de Cambio con el Tiempo sobre Contagios en Arequipa",
+			"title": "Gráfico Comparativo entre Regiones del Perú",
 			"width": 1300,
-			"height": 500
+			"height":3000
 		};
 
 		var mostrar = new google.visualization.LineChart(document.getElementById("Grafico"));
@@ -31,7 +31,7 @@ function mostrarGrafico (data) {
 	}
 }
 
-function agregarDatos (data) {
+function agregarDatos (grafico, data) {
 	
 	const Rows = [];
 	
