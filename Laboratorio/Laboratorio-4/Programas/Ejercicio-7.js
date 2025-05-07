@@ -47,8 +47,6 @@ function comparar () {
 	let region2 = document.getElementById("region2").value;
 	region1 = parseInt(region1);
 	region2 = parseInt(region2);
-	let ultimoDato1 = data[region1].confirmed.length - 1;
-	let ultimoDato2 = data[region2].confirmed.length - 1;
 
 	// API de Google Charts
 	google.charts.load('current', {'packages':['corechart']});
@@ -58,19 +56,23 @@ function comparar () {
 
 		// Grafico
 		var grafico = new google.visualization.DataTable();
-		grafico.addColumn('string', 'Topping');
-		grafico.addColumn('number', 'Slices');
-		grafico.addRows([
-			[data[region1].region, parseInt(data[region1].confirmed[ultimoDato1].value)],
-			[data[region2].region, parseInt(data[region2].confirmed[ultimoDato2].value)]
-		]);
+		grafico.addColumn('string', 'Fechas');
+		grafico.addColumn('number', data[region1].region);
+		grafico.addColumn('number', data[region2].region);
+
+		agregarDatos(grafico, region1, region2);
 
 		// Opciones
 		var options = {'title':'Gráfico Comparativo de la última fecha de Confirmados',
 									 'width':600,
 									 'height':500};
 		
-		var chart = new google.visualization.PieChart(document.getElementById("grafico"));
+		var chart = new google.visualization.LineChart(document.getElementById("grafico"));
 		chart.draw(grafico, options);
 	}
+}
+
+function agregarDatos (grafico, reg1, reg2) {
+
+	
 }
