@@ -20,7 +20,7 @@ function mostrarGrafico (data) {
 
 		var options = {
 			hAxis: { title: "Fecha" },
-      vAxis: { title: "Contagios" },
+			vAxis: { title: "Contagios" },
 			"title": "Gráfico Comparativo entre Regiones del Perú",
 			"width": 1300,
 			"height":3000
@@ -36,12 +36,15 @@ function agregarDatos (grafico, data) {
 	const Rows = [];
 	
 	for (let i = 0 ; i < data.length ; i++) {
-		if (data[i].region != "Callao" && data[i].region != "Lima")
+		
+		if (data[i].region != "Callao" && data[i].region != "Lima") {
 			grafico.addColumn("number", data[i].region);
+		}
 	}
 	
 	// Agrega las fechas
 	for (let i = 0 ; i < 1 ; i++) {
+		
 		for (let j = 0 ; j < data[i].confirmed.length ; j++) {
 			Rows.push( [data[i].confirmed[j].date] );
 		}
@@ -49,9 +52,12 @@ function agregarDatos (grafico, data) {
 
 	// Agrega los datos de contagios
 	for (let i = 0 ; i < data.length ; i++) {
-		if (data[i].region != "Callao" && data[i].region != "Lima")
+		
+		if (data[i].region != "Callao" && data[i].region != "Lima") {
+			
 			for (let j = 0 ; j < data[i].confirmed.length ; j++) {
 				Rows[j].push( parseInt(data[i].confirmed[j].value) );
+			}
 		}
 	}
 
