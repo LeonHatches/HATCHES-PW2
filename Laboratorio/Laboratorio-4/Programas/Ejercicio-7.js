@@ -63,9 +63,11 @@ function comparar () {
 		agregarDatos(grafico, region1, region2);
 
 		// Opciones
-		var options = {'title':'Gráfico Comparativo entre '+data[region1].region+' y '+data[region2].region,
-									 'width':1500,
-									 'height':1000};
+		var options = {
+			'title':'Gráfico Comparativo entre '+data[region1].region+' y '+data[region2].region,
+			'width':1500,
+			'height':1000
+		};
 		
 		var chart = new google.visualization.LineChart(document.getElementById("grafico"));
 		chart.draw(grafico, options);
@@ -78,6 +80,7 @@ function agregarDatos (grafico, region1, region2) {
 	
 	// Agrega las fechas
 	for (let i = 0 ; i < 1 ; i++) {
+		
 		for (let j = 0 ; j < data[i].confirmed.length ; j++) {
 			Rows.push( [data[i].confirmed[j].date] );
 		}
