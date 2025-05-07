@@ -20,7 +20,7 @@ function mostrarGrafico (data) {
 		grafico.addColumn("number", "Contagios");
 
 		for (let i = 0 ; i < AREQ.confirmed.length ; i++) {
-			grafico.addRow(AREQ.confirmed[i].date, AREQ.confirmed[i].value);
+			grafico.addRow([AREQ.confirmed[i].date, parseInt(AREQ.confirmed[i].value)]);
 		}
 
 		var mostrar = new google.visualization.LineChart(document.getElementById("Grafico"));
