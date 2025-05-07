@@ -4,19 +4,17 @@ let data;
 
 document.addEventListener('DOMContentLoaded', function () {
 
-	const xhttp = new XMLHttpRequest();
-	
-	xhttp.onload = function () {
-		data = JSON.parse(xhttp.responseText);	
-		crearSelects();
-	}
-
-	xhttp.open('GET', 'data.json');
-	xhttp.send();
+	fetch("data.json")
+	.then(res => res.json())
+	.then(dat =>
+		crearSelects(dat)
+	);
 
 });
 
-function crearSelects () {
+function crearSelects (dat) {
+
+	data = dat;
 
 	let lista1 = "<select id = 'region1'>";
 	let lista2 = "<select id = 'region2'>";
