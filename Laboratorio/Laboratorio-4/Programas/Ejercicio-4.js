@@ -13,7 +13,18 @@ function mostrarGrafico (data) {
 	google.charts.setOnLoadCallback(graficar);
 
 	function graficar () {
-		var grafico = google.visualization.DataTable();
+		
+		var grafico = new google.visualization.DataTable();
+		
+		grafico.addColumn("string", "Fecha");
+		grafico.addColumn("number", "Contagios");
+
+		for (let i = 0 ; i < AREQ.confirmed.length ; i++) {
+			grafico.addRow(AREQ.confirmed[i].date, AREQ.confirmed[i].value);
+		}
+
+		var mostrar = new google.visualization.LineChart(document.getElementById("Grafico"));
+		mostrar.draw(grafico);
 	}
 
 }
