@@ -23,8 +23,16 @@ function mostrarGrafico (data) {
 			grafico.addRow([AREQ.confirmed[i].date, parseInt(AREQ.confirmed[i].value)]);
 		}
 
+		var options = {
+			hAxis: { title: "Fecha" },
+      vAxis: { title: "Contagios" },
+			"title": "Grafico de Cambio con el Tiempo sobre Contagios en Arequipa",
+			"width": 1300,
+			"height": 500
+		};
+
 		var mostrar = new google.visualization.LineChart(document.getElementById("Grafico"));
-		mostrar.draw(grafico);
+		mostrar.draw(grafico, options);
 	}
 
 }
