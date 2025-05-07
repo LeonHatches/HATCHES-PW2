@@ -25,7 +25,7 @@ function mostrarGrafico (data) {
 
 		var options = {
 			hAxis: { title: "Fecha" },
-      vAxis: { title: "Contagios" },
+			vAxis: { title: "Contagios" },
 			"title": "Grafico de Cambio con el Tiempo sobre Contagios en Arequipa",
 			"width": 1300,
 			"height": 500
