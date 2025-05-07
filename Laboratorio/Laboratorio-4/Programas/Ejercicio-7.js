@@ -63,7 +63,7 @@ function comparar () {
 		agregarDatos(grafico, region1, region2);
 
 		// Opciones
-		var options = {'title':'Gráfico Comparativo de la última fecha de Confirmados',
+		var options = {'title':'Gráfico Comparativo entre '+data[region1].region+' y '+data[region2].region,
 									 'width':600,
 									 'height':500};
 		
@@ -72,7 +72,25 @@ function comparar () {
 	}
 }
 
-function agregarDatos (grafico, reg1, reg2) {
+function agregarDatos (grafico, region1, region2) {
 
+	const Rows = [];
 	
+	// Agrega las fechas
+	for (let i = 0 ; i < 1 ; i++) {
+		for (let j = 0 ; j < data[i].confirmed.length ; j++) {
+			Rows.push( [data[i].confirmed[j].date] );
+		}
+	}
+
+	// Agrega los datos de contagios
+	for (let i = 0 ; i < data[region1].confirmed.length ; i++) {
+		Rows[i].push( parseInt(data[region1].confirmed[i].value) );
+	}
+
+	for (let i = 0 ; i < data[region2].confirmed.length ; i++) {
+		Rows[i].push( parseInt(data[region2].confirmed[i].value) );
+	}
+
+	grafico.addRows(Rows);
 }
