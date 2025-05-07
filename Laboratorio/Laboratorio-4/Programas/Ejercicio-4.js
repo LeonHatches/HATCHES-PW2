@@ -9,7 +9,13 @@ function mostrarGrafico (data) {
 
 	const AREQ = encontrarArequipa(data);
 
-	console.log(AREQ);
+	google.charts.load('current', {packages: ['corechart', 'line']});
+	google.charts.setOnLoadCallback(graficar);
+
+	function graficar () {
+		var grafico = google.visualization.DataTable();
+	}
+
 }
 
 function encontrarArequipa (data) {
