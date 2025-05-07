@@ -20,10 +20,10 @@ function mostrarGrafico (data) {
 
 		var options = {
 			hAxis: { title: "Días" },
-      vAxis: { title: "Cantidad de Contagios" },
-			"title": "Gráfico Comparativo entre Regiones del Perú",
-			"width": 1500,
-			"height": 3000
+      vAxis: { title: "Confirmados" },
+			"title": "Gráfico Comparativo entre Regiones por Día del Perú",
+			"width": 4000,
+			"height": 2000
 		};
 
 		var mostrar = new google.visualization.LineChart(document.getElementById("Grafico"));
@@ -34,7 +34,8 @@ function mostrarGrafico (data) {
 function agregarDatos (grafico, data) {
 	
 	const Rows = [];
-	
+	let dato1, dato2;
+
 	for (let i = 0 ; i < data.length ; i++) {
 		if (data[i].region != "Callao" && data[i].region != "Lima")
 			grafico.addColumn("number", data[i].region);
@@ -50,8 +51,12 @@ function agregarDatos (grafico, data) {
 	// Agrega los datos de contagios
 	for (let i = 0 ; i < data.length ; i++) {
 		if (data[i].region != "Callao" && data[i].region != "Lima")
-			for (let j = 0 ; j < data[i].confirmed.length ; j++) {
-				Rows[j].push( parseInt(data[i].confirmed[j].value) );
+			for (let j = 0 ; j < data[i].confirmed.length - 1 ; j++) {
+				
+				dato1 = parseInt(data[i].confirmed[j].value);
+				dato2 = parseInt(data[i].confirmed[j+1].value);
+
+				Rows[j].push(dato2 - dato1);
 		}
 	}
 
