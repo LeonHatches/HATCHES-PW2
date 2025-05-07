@@ -17,12 +17,23 @@ function mostrarGrafico (data) {
 		grafico.addColumn("string", "Fecha");
 
 		agregarDatos(data);
+
+		var options = {
+			hAxis: { title: "Fecha" },
+      vAxis: { title: "Contagios" },
+			"title": "Grafico de Cambio con el Tiempo sobre Contagios en Arequipa",
+			"width": 1300,
+			"height": 500
+		};
+
+		var mostrar = new google.visualization.LineChart(document.getElementById("Grafico"));
+		mostrar.draw(grafico, options);
 	}
 }
 
 function agregarDatos (data) {
 	
-	const Row = [];
+	const Rows = [];
 	
 	for (let i = 0 ; i < data.length ; i++) {
 		grafico.addColumn("number", data[i].region);
@@ -31,14 +42,16 @@ function agregarDatos (data) {
 	// Agrega las fechas
 	for (let i = 0 ; i < 1 ; i++) {
 		for (let j = 0 ; j < data[i].confirmed.length ; j++) {
-			Row.push( [data[i].confirmed[j].date] );
+			Rows.push( [data[i].confirmed[j].date] );
 		}
 	}
 
 	// Agrega los datos de contagios
 	for (let i = 0 ; i < data.length ; i++) {
 		for (let j = 0 ; j < data[i].confirmed.length ; j++) {
-			Row[j].push( parseInt(data[i].confirmed[j].value) );
+			Rows[j].push( parseInt(data[i].confirmed[j].value) );
 		}
 	}
+
+	grafico.addRows(Rows);
 }
