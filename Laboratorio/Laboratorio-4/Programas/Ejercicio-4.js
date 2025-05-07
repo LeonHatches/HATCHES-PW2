@@ -6,5 +6,19 @@ fetch("data.json")
 	);
 
 function mostrarGrafico (data) {
-	console.log(data);
+
+	const AREQ = encontrarArequipa(data);
+
+	console.log(AREQ);
+}
+
+function encontrarArequipa (data) {
+
+	for (let i = 0 ; i < data.length ; i++) {
+
+		if (data[i].region == "Arequipa") {
+			return data[i];
+		}
+
+	}
 }
