@@ -20,7 +20,7 @@ function mostrarGrafico (data) {
 
 		var options = {
 			hAxis: { title: "Fecha" },
-      vAxis: { title: "Contagios" },
+			vAxis: { title: "Contagios" },
 			"title": "Gráfico Comparativo entre Regiones del Perú",
 			"width": 1300,
 			"height":3000
