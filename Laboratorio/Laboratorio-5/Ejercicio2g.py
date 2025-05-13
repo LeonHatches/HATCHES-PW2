@@ -34,4 +34,10 @@ cuartoTabla = filaNegativa.up(fila)
 # 1ro Se sobre ponen las piezas a cuadros
 piezasNegativas = cuartoTabla.under(piezasNegativas);
 piezasBlancas = cuartoTabla.under(piezasBlancas)
-draw(piezasBlancas)
+
+# 2do se crea una tabla para mostrar todo
+# Primero las Piezas Blancas, luego dos cuartos de Tabla
+# Y por último son las piezas negras
+tabla = piezasBlancas.up(cuartoTabla.up(cuartoTabla.up(piezasNegativas)))
+
+draw(tabla)
