@@ -4,11 +4,14 @@ from chessPictures import *
 # Se comienza insertando las piezas blancas
 trio = bishop.join(knight.join(rock))
 trioI = rock.join(knight.join(bishop))
-piezasBlancas = trioI.join(queen.join(king.join(trio)))
-piezasBlancas = piezasBlancas.up(pawn.horizontalRepeat(8))
+especialesBlancos = trioI.join(queen.join(king.join(trio)))
+peonesBlancos = pawn.horizontalRepeat(8)
+piezasBlancas = especialesBlancos.up(peonesBlancos)
+
+# Se crean las piezas negativas
+piezasNegativas = peonesBlancos.negative().up(especialesBlancos.negative())
 
 # Se crean filas
-
 # Fila que comienza con cuadrado Blanco
 fila = square
 
@@ -24,4 +27,4 @@ filaNegativa = fila.negative()
 # Fila de 2 para repetir despues
 cuartoTabla = filaNegativa.up(fila)
 
-draw(cuartoTabla)
+draw(piezasNegativas)
