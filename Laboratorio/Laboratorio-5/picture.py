@@ -100,9 +100,9 @@ class Picture:
     repeticion = Picture(self.img)
 
     for i in range(n-1):
-      repeticion.img = repeticion.join(self)
+      repeticion.img = repeticion.join(self).img
 
-    return Picture(repeticion)
+    return repeticion
 
   def verticalRepeat(self, n):
     """Devuelve una nueva figura repitiendo la figura actual debajo, la
@@ -111,9 +111,9 @@ class Picture:
     repeticion = Picture(self.img)
 
     for i in range(n-1):
-      repeticion.img = repeticion.up(self)
+      repeticion.img = repeticion.up(self).img
 
-    return Picture(repeticion)
+    return repeticion
 
   #Extra: Sólo para realmente viciosos 
   def rotate(self):
