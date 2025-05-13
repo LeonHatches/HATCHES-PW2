@@ -5,4 +5,8 @@ from chessPictures import *
 # Fig de un caballo de color invertido
 blancoYnegro = Picture(knight.join(Picture(knight.negative())))
 
-draw(blancoYnegro)
+# Se crea una Fig, donde se crea una Fig de caballo invertido y
+# se inseta un caballo a su costado
+negroYblanco = Picture(Picture(knight.negative()).join(knight))
+
+draw(negroYblanco.up(blancoYnegro))
