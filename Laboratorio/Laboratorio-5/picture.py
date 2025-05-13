@@ -48,12 +48,18 @@ class Picture:
     return lado
 
   def up(self, p):
-    """ Devuelve una nueva figura poniendo la figura p sobre la
+    """ Devuelve una nueva figura poniendo la figura p encima de la
         figura actual """
-    return Picture(None)
+    
+    arriba = p.img.copy()
+
+    for valor in self.img:
+      arriba.append(valor)
+    
+    return arriba
 
   def under(self, p):
-    """ Devuelve una nueva figura poniendo la figura p debajo de la
+    """ Devuelve una nueva figura poniendo la figura p sobre de la
         figura actual """
     return Picture(None)
   
