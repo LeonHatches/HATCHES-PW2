@@ -27,4 +27,11 @@ filaNegativa = fila.negative()
 # Fila de 2 para repetir despues
 cuartoTabla = filaNegativa.up(fila)
 
-draw(piezasNegativas)
+
+# Se procede a juntar todo
+# Va seguir un orden:
+
+# 1ro Se sobre ponen las piezas a cuadros
+piezasNegativas = cuartoTabla.under(piezasNegativas);
+piezasBlancas = cuartoTabla.under(piezasBlancas)
+draw(piezasBlancas)
