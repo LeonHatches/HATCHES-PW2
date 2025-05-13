@@ -28,10 +28,19 @@ class Picture:
   def negative(self):
     """ Devuelve un negativo de la imagen """
     negativo = []
-
+    
     for valor in self.img:
-      valor = valor.replace(".", "@")
-      negativo.append(valor)
+      cadena = ""
+      
+      for pixel in valor:
+        if pixel != "#":
+          invertido = self._invColor(pixel)
+          cadena += invertido
+        
+        else:
+          cadena += pixel
+
+      negativo.append(cadena)
 
     return negativo
 
