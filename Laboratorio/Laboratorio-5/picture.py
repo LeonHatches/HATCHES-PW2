@@ -14,16 +14,20 @@ class Picture:
   def verticalMirror(self):
     """ Devuelve el espejo vertical de la imagen """
     vertical = []
+
     for value in self.img:
       vertical.append(value[::-1])
-    return vertical
+
+    return Picture(vertical)
 
   def horizontalMirror(self):
     """ Devuelve el espejo horizontal de la imagen """
     horizontal = []
+
     for valor in self.img:
       horizontal.insert(0, valor)
-    return horizontal
+
+    return Picture(horizontal)
 
   def negative(self):
     """ Devuelve un negativo de la imagen """
@@ -42,7 +46,7 @@ class Picture:
 
       negativo.append(cadena)
 
-    return negativo
+    return Picture(negativo)
 
   def join(self, p):
     """ Devuelve una nueva figura poniendo la figura del argumento 
@@ -54,7 +58,7 @@ class Picture:
       nuevo = self.img[i] + p.img[i]
       lado.append(nuevo)
     
-    return lado
+    return Picture(lado)
 
   def up(self, p):
     """ Devuelve una nueva figura poniendo la figura p encima de la
@@ -65,7 +69,7 @@ class Picture:
     for valor in self.img:
       arriba.append(valor)
     
-    return arriba
+    return Picture(arriba)
 
   def under(self, p):
     """ Devuelve una nueva figura poniendo la figura p sobre de la
@@ -87,7 +91,7 @@ class Picture:
       encima.append(cadena)
       cadena = ""
        
-    return encima
+    return Picture(encima)
   
   def horizontalRepeat(self, n):
     """ Devuelve una nueva figura repitiendo la figura actual al costado
@@ -98,7 +102,7 @@ class Picture:
     for i in range(n-1):
       repeticion.img = repeticion.join(self)
 
-    return repeticion
+    return Picture(repeticion)
 
   def verticalRepeat(self, n):
     """Devuelve una nueva figura repitiendo la figura actual debajo, la
@@ -109,7 +113,7 @@ class Picture:
     for i in range(n-1):
       repeticion.img = repeticion.up(self)
 
-    return repeticion
+    return Picture(repeticion)
 
   #Extra: Sólo para realmente viciosos 
   def rotate(self):
