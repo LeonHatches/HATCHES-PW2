@@ -61,7 +61,24 @@ class Picture:
   def under(self, p):
     """ Devuelve una nueva figura poniendo la figura p sobre de la
         figura actual """
-    return Picture(None)
+    
+    encima = []
+    cadena = ""
+    
+    for i in range(len(p.img)):          # Recorre las cadenas
+      
+      for j in range(len(p.img[i])):     # Recorre cada pixel - letra
+        
+        if p.img[i][j] == " ":
+          cadena += self.img[i][j]
+
+        else:
+          cadena += p.img[i][j]
+          
+      encima.append(cadena)
+      cadena = ""
+       
+    return encima
   
   def horizontalRepeat(self, n):
     """ Devuelve una nueva figura repitiendo la figura actual al costado

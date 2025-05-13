@@ -1,4 +1,4 @@
 from interpreter import draw
 from chessPictures import *
 
-draw(rock.up(knight))
+draw(square.under(knight))
