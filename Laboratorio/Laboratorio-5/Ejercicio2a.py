@@ -5,6 +5,6 @@ from chessPictures import *
 blancoYnegro = knight.join(knight.negative())
 
 # Se coloca al caballo invertido y se inserta un caballo a su costado
-negroYblanco = knight.negative().join(knight)
+negroYblanco = blancoYnegro.negative()
 
 draw(negroYblanco.up(blancoYnegro))
