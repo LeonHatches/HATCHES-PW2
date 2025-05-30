@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.pyc
+.cache
+*.cache/
+/Proyecto/__pycache__/
