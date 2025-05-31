@@ -11,10 +11,22 @@ def register(request):
         password1  = request.POST['password1']
         password2  = request.POST['password2']
 
-        user = User.objects.create(username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
-        user.save()
-        print('User Created')
+        if password1 == password2:
+            if User.objects.filter(username=username).exists():
+                print('Username taken')
+
+            elif User.objects.filter(email=email).exists():
+                print('Email taken')
+            
+            else:
+                user = User.objects.create(username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
+                user.save()
+                print('User Created')
         
+        else:
+            print('Password not matching')
+
         return redirect('/')
+    
     else:
         return render(request, 'register.html')
