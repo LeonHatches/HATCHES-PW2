@@ -1,26 +1,81 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Register</title>
+    <title>Iniciar Sesión</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Travello Register">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/form.css' %}">
 </head>
 
-<body>
-    <form action="register" method="post">
-        {% csrf_token %}
-        <input type="text" name="first_name" placeholder="First Name"><br>
-        <input type="text" name="last_name" placeholder="Last Name"><br>
-        <input type="text" name="username" placeholder="Username"><br>
-        <input type="email" name="email" placeholder="Email"><br>
-        <input type="password" name="password1" placeholder="Password"><br>
-        <input type="password" name="password2" placeholder="Confirm Password"><br>
-        <input type="submit">
-    </form>
+<body class="bg-light d-flex justify-content-center align-items-center" style="margin-top: 5rem; background-image: url('{% static 'images/destination_9.jpg' %}');">
+    
+    {% include "header.html" %}
 
-    <div>
-        {% for message in messages %}
-        <h2> {{message}} </h2>
-        {% endfor %}
+    <div class="w-100" style="max-width: 400px;">
+        
+        <div>
+
+            <div class="mb-3">
+                {% for message in messages %}
+                <div class="alert alert-danger text-center"> {{message}} </div>
+                {% endfor %}
+            </div>
+
+            <div class="card shadow p-4 bg-white rounded">
+                <form method="post" action="register">
+                    {% csrf_token %}
+                    <h3 class="text-center mb-4" style="color: #013252;">Regístrate</h3>
+
+                    <!--Nombres-->
+                    <div class="form-group">
+                        <label for="first_name">Nombres</label>
+                        <input type="text" name="first_name" class="form-control" style="color: black;" placeholder="Ingresa tus nombres" required>
+                    </div>
+
+                    <!--Apellidos-->
+                    <div class="form-group">
+                        <label for="last_name">Apellidos</label>
+                        <input type="text" name="last_name" class="form-control" style="color: black;" placeholder="Ingresa tus apellidos" required>
+                    </div>
+
+                    <!--Username-->
+                    <div class="form-group">
+                        <label for="username">Usuario</label>
+                        <input type="text" name="username" class="form-control" style="color: black;" placeholder="Ingresa tu usuario" required>
+                    </div>
+
+                    <!--Username-->
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" style="color: black;" placeholder="Ingresa tu correo electrónico" required>
+                    </div>
+
+                    <!--Contraseña-->
+                    <div class="form-group">
+                        <label for="password1">Crear Contraseña</label>
+                        <input type="password" name="password1" class="form-control" style="color: black;" placeholder="Ingresa tu contraseña" required>
+                    </div>
+
+                    <!--Repite Contraseña-->
+                    <div class="form-group">
+                        <label for="password2">Confirmar Contraseña</label>
+                        <input type="password" name="password2" class="form-control" style="color: black;" placeholder="Confirma la contraseña" required>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>
