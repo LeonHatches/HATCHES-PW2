@@ -35,10 +35,9 @@
 		<div class="home_slider_container">
 			<div class="owl-carousel owl-theme home_slider">
 
-				{% for dest in dests %}
 				<!-- Slide -->
 				<div class="owl-item">
-					<div class="background_image" style="background-image:url({{dest.imagenCiudad.url}})"></div>
+					<div class="background_image" style="background-image:url({% static 'images/destination_4.jpg' %})"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
@@ -51,7 +50,6 @@
 						</div>
 					</div>
 				</div>
-				{% endfor %}
 
 			</div>
 
