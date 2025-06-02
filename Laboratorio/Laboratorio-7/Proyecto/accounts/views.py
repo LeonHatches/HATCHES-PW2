@@ -14,24 +14,21 @@ def register(request):
 
         if password1 == password2:
             if User.objects.filter(username=username).exists():
-                messages.info(request, 'Username taken')
+                messages.info(request, 'Nombre de Usuario Ocupado')
                 return redirect("register")
                       
             elif User.objects.filter(email=email).exists():
-                messages.info(request, 'Email taken')
+                messages.info(request, 'Email Ocupado')
                 return redirect("register")
             
             else:
-                user = User.objects.create(username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
+                user = User.objects.create_user(username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
                 user.save()
-                print('User Created')
                 return redirect('login')
         
         else:
-            messages.info(request, 'Password not matching')
+            messages.info(request, 'Contraseña Mal Confirmada')
             return redirect("register")
-
-        return redirect('/')
     
     else:
         return render(request, 'register.html')
@@ -50,7 +47,7 @@ def login(request):
             return redirect('/')
         
         else:
-            messages.info(request,'invalid credentials')
+            messages.info(request,'No coincide el Usuario o Contraseña invalida')
             return redirect('login')
     else:
         return render(request, 'login.html')
