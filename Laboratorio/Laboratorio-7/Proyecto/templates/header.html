@@ -7,18 +7,18 @@
                         <div class="logo"><a href="/">Travello</a></div>
                         <nav class="main_nav">
                             <ul class="d-flex flex-row align-items-start justify-content-start">
-                                <li><a href="index.html">Inicio</a></li>
-                                <li><a href="contact.html">Contáctanos</a></li>
+                                <li><a href="/">Inicio</a></li>
+                                <li><a href="#" data-scroll-to="#destinations">Contáctanos</a></li>
 
                                 {% if user.is_authenticated %}
 
                                 <li><a href>Bienvenido, {{user.first_name}}</a></li>
-                                <li><a href="accounts/logout">Cerrar Sesión</a></li>
+                                <li><a href="/accounts/logout">Cerrar Sesión</a></li>
 
                                 {% else %}
 
-                                <li><a href="accounts/register">Regístrate</a></li>
-                                <li><a href="accounts/login">Iniciar Sesión</a></li>
+                                <li><a href="/accounts/register">Regístrate</a></li>
+                                <li><a href="/accounts/login">Iniciar Sesión</a></li>
 
                                 {% endif %}
                             </ul>
@@ -35,15 +35,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="header_social d-flex flex-row align-items-center justify-content-start">
-        <ul class="d-flex flex-row align-items-start justify-content-start">
-            <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-        </ul>
     </div>
 </header>
